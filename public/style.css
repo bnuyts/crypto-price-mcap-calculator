@@ -1,0 +1,12 @@
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.crypto-entry {
+  margin-bottom: 0.5rem;
+}
+
+.token-icon {
+  height: 14px;
+  margin-right: 0.5rem;
+}
