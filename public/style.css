@@ -2,11 +2,13 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
 }
 
-.crypto-entry {
-  margin-bottom: 0.5rem;
+.icon-cell {
+  width: 40px;
+  height: auto;
+  max-width: 40px;
 }
 
 .token-icon {
-  height: 14px;
-  margin-right: 0.5rem;
+  width: 100%;
+  height: auto;
 }

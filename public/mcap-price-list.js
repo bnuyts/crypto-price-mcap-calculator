@@ -19,13 +19,37 @@ class McapPriceList extends React.Component {
   render() {
     const items = this.state.cryptoData.map((entry) =>
       e(
-        'div',
+        'tr',
         { class: 'crypto-entry' },
-        e('img', { src: entry.image, class: 'token-icon' }, null),
-        `${entry.name} - ${entry.current_price} - ${entry.price_in_btc_mcap} - ${entry.price_in_eth_mcap}`
+        e(
+          'td',
+          { class: 'icon-cell' },
+          e('img', { src: entry.image, class: 'token-icon' }, null)
+        ),
+        e('td', {}, entry.name),
+        e('td', {}, entry.current_price),
+        e('td', {}, entry.price_in_btc_mcap),
+        e('td', {}, entry.price_in_eth_mcap)
       )
     );
-    return e('div', {}, items);
+    return e(
+      'table',
+      { class: 'table' },
+      e(
+        'thead',
+        {},
+        e(
+          'tr',
+          {},
+          e('th', {}, ''),
+          e('th', {}, 'name'),
+          e('th', {}, 'current price'),
+          e('th', {}, 'price in BTC mcap'),
+          e('th', {}, 'price in ETH mcap')
+        )
+      ),
+      e('tbody', {}, items)
+    );
   }
 }
 

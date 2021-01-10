@@ -11,7 +11,11 @@ const calculatePossibleMcap = (
   targetMcap: number = 1,
   tokenMcap: number,
   tokenPrice: number
-): string => ((targetMcap / tokenMcap) * tokenPrice).toString();
+): string =>
+  ((targetMcap / tokenMcap) * tokenPrice).toLocaleString('nl', {
+    useGrouping: true,
+    minimumFractionDigits: 2,
+  });
 
 calc.get('/:token', async (req, res) => {
   const compareTo = (req.query.compareto as string) || 'bitcoin';
