@@ -16,12 +16,12 @@ const getFractionSize = (number: number) => {
   if (capture) {
     return capture[0].length;
   }
-  return undefined;
+  return 0;
 };
 
 const formatLocale = (
   number: number,
-  maximumFractionDigits: number = 0
+  maximumFractionDigits: number = 20
 ): string =>
   '$' +
   number.toLocaleString('en', {
