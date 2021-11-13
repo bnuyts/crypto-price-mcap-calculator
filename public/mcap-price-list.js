@@ -45,7 +45,7 @@ class McapPriceList extends React.Component {
               e('img', { src: entry.image, class: 'token-icon' }, null)
             ),
             e('td', {}, entry.name),
-            e('td', {}, entry.current_price),
+            e('td', {}, entry.formatted_price),
             e('td', {}, entry.price_in_btc_mcap),
             e('td', {}, entry.price_in_eth_mcap)
           )

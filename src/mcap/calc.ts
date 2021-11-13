@@ -7,15 +7,16 @@ import {
 
 export const calc = express.Router();
 
+const formatLocale = (number: Number): string =>
+  number.toLocaleString('en', {
+    useGrouping: true,
+  });
+
 const calculatePossibleMcap = (
   targetMcap: number = 1,
   tokenMcap: number,
   tokenPrice: number
-): string =>
-  ((targetMcap / tokenMcap) * tokenPrice).toLocaleString('nl', {
-    useGrouping: true,
-    minimumFractionDigits: 2,
-  });
+): string => formatLocale((targetMcap / tokenMcap) * tokenPrice);
 
 calc.get('/:token', async (req, res) => {
   const compareTo = (req.query.compareto as string) || 'bitcoin';
@@ -33,6 +34,7 @@ calc.get('/:token', async (req, res) => {
 });
 
 interface ExtendedMarketData extends MarketData {
+  formatted_price?: string;
   price_in_btc_mcap?: string;
   price_in_eth_mcap?: string;
 }
@@ -42,6 +44,7 @@ calc.get('/', async (req, res) => {
   const btcData = marketData.find((md) => md.symbol === 'btc');
   const ethData = marketData.find((md) => md.symbol === 'eth');
   marketData.forEach((emd: ExtendedMarketData) => {
+    emd.formatted_price = formatLocale(emd.current_price);
     emd.price_in_btc_mcap = calculatePossibleMcap(
       btcData?.market_cap,
       emd.market_cap,
