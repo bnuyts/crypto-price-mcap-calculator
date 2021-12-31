@@ -2,7 +2,7 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
 }
 
-.icon-cell {
+.square-cell {
   width: 40px;
   height: auto;
   min-width: 40px;
@@ -11,4 +11,8 @@ body {
 .token-icon {
   width: 100%;
   height: auto;
+}
+
+a {
+  text-decoration: none;
 }

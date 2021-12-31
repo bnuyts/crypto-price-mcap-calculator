@@ -8,7 +8,9 @@ import {
 export const calc = express.Router();
 
 const isStableCoin = (symbol: string) =>
-  ['usdt', 'busd', 'usdc', 'tusd', 'frax', 'lusd'].some((s) => s === symbol);
+  ['usdt', 'busd', 'usdc', 'tusd', 'frax', 'lusd', 'ust', 'dai', 'mim'].some(
+    (s) => s === symbol
+  );
 
 const getFractionSize = (number: number) => {
   const fractionCapture = /(?<=\.).*/;

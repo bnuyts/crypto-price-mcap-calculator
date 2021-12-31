@@ -35,16 +35,35 @@ class McapPriceList extends React.Component {
 
   render() {
     const items = this.state.cryptoData
-      ? this.state.cryptoData.map((entry) =>
+      ? this.state.cryptoData.map((entry, index) =>
           e(
             'tr',
             { class: 'crypto-entry' },
             e(
               'td',
-              { class: 'icon-cell' },
+              {
+                class: 'square-cell',
+              },
+              index + 1
+            ),
+            e(
+              'td',
+              { class: 'square-cell' },
               e('img', { src: entry.image, class: 'token-icon' }, null)
             ),
-            e('td', {}, entry.name),
+            e(
+              'td',
+              {},
+              e(
+                'a',
+                {
+                  class: 'link-dark',
+                  href: 'https://www.coingecko.com/en/coins/' + entry.id,
+                  target: '_blank',
+                },
+                entry.name
+              )
+            ),
             e('td', {}, entry.formatted_price),
             e('td', {}, entry.price_in_btc_mcap),
             e('td', {}, entry.price_in_eth_mcap)
@@ -61,6 +80,7 @@ class McapPriceList extends React.Component {
         e(
           'tr',
           {},
+          e('th', {}, ''),
           e('th', {}, ''),
           e('th', {}, 'name'),
           e('th', {}, 'current price'),
